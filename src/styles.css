@@ -1,3 +1,9 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #ffffff;
+  }
+  
+
 
 .card {
     width: 100%;
@@ -167,5 +173,48 @@
     max-height: 90%; /* 画像サイズの調整 */
   }
   
+  h1 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid #fefefe;
+    padding-bottom: .3rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  
+  input[type="text"], select {
+    width: 100%;
+    padding: 6px 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  button {
+    background-color: #0366d6;
+    color: white;
+    padding: 10px 24px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
   
   
+
+  
+  .large-textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }

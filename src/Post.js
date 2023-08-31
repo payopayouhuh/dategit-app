@@ -68,15 +68,17 @@ class FunMessage extends Component {
     }
   };
 
-  handleForkClick = () => {
-    if(this.state.forkflag === 0){
+    handleForkClick = () => {
+        if(this.state.forkflag === 0) {
         this.setState((prevState) => ({
             forks: prevState.forks + 1,
-            forkflag : prevState.forkflag + 1
-
-
-        }));
-    }
+            forkflag: prevState.forkflag + 1
+        }), () => { // 状態が更新された後に呼び出されるコールバック関数
+            window.location.href = "/post";
+        });
+        }
+    
+  
     else{
         this.setState((prevState) => ({
             forks: prevState.forks - 1,
@@ -136,7 +138,9 @@ class FunMessage extends Component {
         <p className="author">Posted by: john25</p>
         <div dangerouslySetInnerHTML={{ __html: this.md.render(markdown) }} />
         <button className="button-like"  onClick={this.handleLikeClick}>Like</button>
+
         <button className="button-fork"  onClick={this.handleForkClick}>Fork</button>
+
         <button className="button-fork-origin" onClick={this.handleForkOriginClick}>Fork元確認</button>
         <p>Like:  {this.state.totalLikes}</p>
         <p>Fork: {this.state.forks}</p>

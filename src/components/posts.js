@@ -2,6 +2,8 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from '../firebase.js';
 import { useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
+import '../styles.css'
+import Header from '../Header';
 
 // ランダムな文字列の生成
 const generateRandomString = (length) => {
@@ -64,6 +66,9 @@ const Post = () => {
         if (uid) {
             const post_id = generateRandomString(10);
 
+                // open_rangeに基づいてisPublicの値を設定
+                const isPublicValue = open_range === "0" ? true : false;  // 公開範囲が "0"（public）ならtrue、それ以外（"1"、つまりprivate）ならfalse
+
             try {
                 const docRef = addDoc(collection(db, "posts"), {
                     title: title,
@@ -73,10 +78,15 @@ const Post = () => {
                     origin_postid: 'xxxxxxxxxx',
                     user_id: uid,
                     likes: 0,
-                    open_range : open_range
+                    open_range : open_range,
+                    isPublic: isPublicValue
                 });
 
                 console.log("Document written with ID: ", docRef.id);
+                window.location.href = "/";
+
+
+
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
@@ -88,20 +98,28 @@ const Post = () => {
 
     return (
         <div>
-            <h1>投稿情報入力</h1>
-            <p>タイトル<input type="text" value={title} onChange={handleTitleChange} /></p>
-            <p>本文<input type="text" value={text} onChange={handleTextChange} /></p>
+          <Header />
+          <h1>投稿情報入力</h1>
+          <label>
+            タイトル
+            <input type="text" value={title} onChange={handleTitleChange} />
+          </label>
+          <label>
+            本文
+            <input type="text" value={text} onChange={handleTextChange} />
+          </label>
+          <label>
+            公開範囲
             <select value={open_range} onChange={handleOpenrangeChange}>
-                <option value="">公開範囲を選択してください</option>
-                <option value="0">public</option>
-                <option value="1">private</option>
+              <option value="">公開範囲を選択してください</option>
+              <option value="0">public</option>
+              <option value="1">private</option>
             </select>
-            <p>user_id</p>
-            <button onClick={() => execute()}>
-                投稿
-            </button>
+          </label>
+          <p>user_id</p>
+          <button onClick={() => execute()}>投稿</button>
         </div>
-    );
+      );
 
 };
 

@@ -5,7 +5,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 const Display_user = () => {
     const [userData, setUserData] = useState(null);
-    const [postData, setPostData] = useState(null);
     const [showUserData, setShowUserData] = useState(false);
     const [showPostData, setShowPostData] = useState(false);
 
@@ -23,19 +22,6 @@ const Display_user = () => {
         });
     };
 
-    const fetchPostData = async () => {
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                const uid = user.uid;
-                console.log(uid)
-                const postDoc = await getPostDataByUid(uid);
-                if (postDoc) {
-                    setPostData(postDoc);
-                    setShowPostData(true);
-                }
-            }
-        });
-    };
 
 
 
@@ -59,23 +45,6 @@ const Display_user = () => {
         }
     };
 
-    const getPostDataByUid = async (uid) => {
-        try {
-            const q = query(collection(db, 'posts'), where('user_id', '==', uid));
-            console.log(q)
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                const postData = querySnapshot.docs[0].data();
-                return postData;
-            } else {
-                return null;
-            }
-        } catch (error) {
-            console.error('データの検索中にエラーが発生しました:', error);
-            return null;
-        }
-    };
 
     return (
         <div>

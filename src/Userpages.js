@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs, query, orderBy,where } from 'firebase/firestore';
+import { db } from './firebase.js';
+
 
 import './styles.css';
 import homeIcon from './images/home_icon.png';
 import searchIcon from './images/search_icon.png';
 import userIcon from './images/user_icon.png';
 
+
 const UserPage = () => {
 
-  /*
-  const history = useHistory();
+    const [posts, setPosts] = useState([]);
 
-  const goToUserPage = () => {
-    history.push('/user-page');
-  };
-
-  */
+    useEffect(() => {
+        const fetchPosts = async () => {
+          const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
+          const querySnapshot = await getDocs(q);
+          const postData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+          setPosts(postData);
+        };
+      
+        fetchPosts();
+      }, []);
 
   const initialPosts = [
     {
@@ -61,8 +69,8 @@ const UserPage = () => {
 
 
 
-  const [posts, setPosts] = useState(initialPosts);
-  const [currentUser, setCurrentUser] = useState('john25'); // 例
+  //const [posts, setPosts] = useState(initialPosts);
+  const [currentUser, setCurrentUser] = useState('xnJ6LHga5Xdet15EfUgCYBCGsjy2'); // 例
 
   const handleLike = (postId) => {
     const updatedPosts = posts.map((post) => {
@@ -101,13 +109,13 @@ const UserPage = () => {
       <h2 className="small-text">Your Date Repositories: {posts.length}</h2>
       <div>
         {posts.map((post) => (
-          post.userId === currentUser ? (
+           post.user_id === currentUser ? (
             <div className="card" key={post.id}>
               <div className="card-body">
               <a href="/post-page">
               <h3 className="card-title">{post.title}</h3>
               </a>
-                <h4 className="card-subtitle">Posted by: {post.userId}</h4>
+                <h4 className="card-subtitle">Posted by: {post.user_id}</h4>
                 <p className="card-text">{post.content}</p>
                 <p className="card-text">Likes: {post.likes}</p>
                 <button className="button-fork">Fork</button>
@@ -119,6 +127,7 @@ const UserPage = () => {
                         onClick={() => togglePublicStatus(post.id)}>
                     <i className="fas fa-globe-americas"></i> Public
                 </button>
+
                 <button className={`toggle-button ${!post.isPublic ? "active" : ""}`}
                         onClick={() => togglePublicStatus(post.id)}>
                     <i className="fas fa-lock"></i> Private
@@ -127,7 +136,7 @@ const UserPage = () => {
 
               </div>
             </div>
-          ) : null
+           ) : null
         ))}
       </div>
     </div>
