@@ -1,0 +1,66 @@
+
+
+  
+  
+  .fun-message {
+      font-family: 'Arial', sans-serif;
+      background-color: #f6f8fa;
+      border: 1px solid #d1d5da;
+      padding: 20px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+ 
+  
+    .author {
+      color: #888; 
+      font-size: 18px;
+      margin-bottom: 8px; 
+    }
+  
+  
+    .button-fork-origin {
+      background-color: #fba111d4;
+      color: white;
+      border: none;
+      /*padding: 10px 20px; */
+      height:35px;
+      line-height:35px;
+      border-radius:5px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #0056b3;
+    }
+    
+    /* PlanCard.css */
+  
+  .gender-ratio {
+      margin-top: 20px;
+      text-align: left;
+    }
+    
+    .bar {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .boy-bar,
+  
+    .girl-bar {
+      padding: 5px;
+      color: white;
+      text-align: center;
+    }
+    
+    .boy-bar {
+      background-color: #007bff8a; /* 青色 */
+    }
+    
+    .girl-bar {
+      background-color: #f06291dc; /* ピンク色 */
+    }
+    
