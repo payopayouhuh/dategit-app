@@ -158,7 +158,7 @@ return (
             <a href="/post-page">
               <h3 className="card-title">{post.title}</h3>
             </a>
-            <h4 className="card-subtitle">Posted by: {post.user_id}</h4>
+            <h4 className="card-subtitle">Posted by: {post.user_name}</h4>
             <p className="card-text">{post.content}</p>
             <p className="card-text">Likes: {post.likes}</p>
             <button className="button-fork">Fork</button>

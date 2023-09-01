@@ -32,9 +32,29 @@ const checkLoginStatus = () => {
 
 const Post = () => {
     // ユーザー情報を利用者から取得
-    const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
+    const [title, setTitle] = useState('うめだでーと');
+    const [text, setText] = useState(`
+    ### デートプラン: 梅田で過ごす一日
+    
+    #### 午前
+    - **11:00 集合**: JR大阪駅または梅田駅で集合。
+    - **11:15 ブランチ**: ヨドバシカメラの上層階にあるフードコートでカジュアルなブランチ。
+    - **12:00 ショッピング**: 阪急デパートやルクア大阪でショッピングタイム。
+    
+    #### 午後
+    - **14:00 梅田スカイビル・空中庭園展望台**: 素晴らしい景色を楽しみながら、2人の時間を過ごす。
+    - **15:00 カフェタイム**: 人気のカフェで一息つき、ケーキやコーヒーを楽しむ。
+    
+    #### 夕方・夜
+    - **18:00 ディナー**: 梅田ダイニングで美味しいディナー。
+    - **19:30 映画**: TOHOシネマズ梅田で選んだ映画を鑑賞。
+    - **21:30 バーで一杯**: 居心地のいいバーで1日の終わりにカクテルやワインを楽しむ。
+    
+    #### 22:30 解散・送り出し
+    注意: COVID-19の影響により、営業時間や入店制限が変更されている可能性があります。事前確認をお勧めします。
+    `);
     const [open_range, setOpenrange] = useState('');
+
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -77,6 +97,7 @@ const Post = () => {
                     post_id: post_id,
                     origin_postid: 'xxxxxxxxxx',
                     user_id: uid,
+                    user_name: "Tarou",
                     likes: 0,
                     open_range : open_range,
                     isPublic: isPublicValue
@@ -95,31 +116,36 @@ const Post = () => {
     };
 
 
-
     return (
-        <div>
+        <div className="post-container">
           <Header />
           <h1>投稿情報入力</h1>
-          <label>
-            タイトル
-            <input type="text" value={title} onChange={handleTitleChange} />
-          </label>
-          <label>
+          <div className="input-section">
+            <label>
+              タイトル
+              <input type="text" value={title} onChange={handleTitleChange} className="input-field"/>
+            </label>
+            <label>
+              公開範囲
+              <select value={open_range} onChange={handleOpenrangeChange} className="input-field">
+                <option value="">公開範囲を選択してください</option>
+                <option value="0">public</option>
+                <option value="1">private</option>
+              </select>
+            </label>
+          </div>
+    
+          <label className="text-area-label">
             本文
-            <input type="text" value={text} onChange={handleTextChange} />
+            <textarea value={text} onChange={handleTextChange} rows="15" cols="70" className="text-area"></textarea>
           </label>
-          <label>
-            公開範囲
-            <select value={open_range} onChange={handleOpenrangeChange}>
-              <option value="">公開範囲を選択してください</option>
-              <option value="0">public</option>
-              <option value="1">private</option>
-            </select>
-          </label>
-          <p>user_id</p>
-          <button onClick={() => execute()}>投稿</button>
+    
+          <div className="input-section">
+            <button onClick={() => execute()}>投稿</button>
+          </div>
         </div>
-      );
+    );
+    
 
 };
 
