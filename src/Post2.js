@@ -7,15 +7,17 @@ import MarkdownIt from 'markdown-it';
 
 
 
+
+
 class FunMessage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       likes: 0,
-      forks: 7,
-      boyLikes: 28, // 男の子用いいね数
-      girlLikes: 29, // 女の子用いいね数
-      totalLikes: 57, //トータルいいね数
+      forks: 0,
+      boyLikes: 0, // 男の子用いいね数
+      girlLikes: 0, // 女の子用いいね数
+      totalLikes: 0, //トータルいいね数
       likeflag : 0,
       forkflag : 0,
       boyRatio : 0,
