@@ -2,8 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##概要
-https://github.com/payopayouhuh/dategit-app/assets/134220954/2f319aa0-8141-47a2-9e25-1ae3be51939d
+## 概要
+![image](https://github.com/payopayouhuh/dategit-app/assets/134220954/2f319aa0-8141-47a2-9e25-1ae3be51939d)
 
 ## Available Scripts
 
