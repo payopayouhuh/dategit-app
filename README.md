@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+##概要
+https://github.com/payopayouhuh/dategit-app/issues/1#issue-1879388593
+
 ## Available Scripts
 
 In the project directory, you can run:
