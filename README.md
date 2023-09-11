@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## 概要
-docomoのハッカソン型夏季インターンシップにて作成,審査の結果最優秀賞を受賞.
+
 
 ## Available Scripts
 
